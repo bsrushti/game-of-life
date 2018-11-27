@@ -6,4 +6,11 @@ const fillConsecutiveNumbersArray = function(limit){
   return array;
 }
 
-module.exports = { fillConsecutiveNumbersArray }
+const createArray = function(length,filler){
+  return new Array(length).fill(filler);
+};
+
+module.exports = { 
+  fillConsecutiveNumbersArray,
+  createArray
+};
