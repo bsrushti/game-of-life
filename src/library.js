@@ -17,8 +17,16 @@ const dashline = function(length){
   return fillArray(length*4+1,"-").join("");
 };
 
+const addSpaces = function(text){
+  if(text != undefined){
+    return " "+text+" ";
+  };
+  return "";
+};
+
 module.exports = { 
   fillConsecutiveNumbersArray,
   fillArray,
-  dashline
+  dashline,
+  addSpaces
 };

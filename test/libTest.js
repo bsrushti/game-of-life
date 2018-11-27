@@ -2,7 +2,8 @@ const {deepEqual, equal} = require('assert');
 const {
   fillConsecutiveNumbersArray,
   fillArray,
-  dashline
+  dashline,
+  addSpaces
 } = require('../src/library.js'); 
 
 describe('fillConsecutiveNumbersArray', () => {
@@ -35,6 +36,15 @@ describe('dashline',()=>{
     equal(dashline(1),"-----");
     equal(dashline(2),"---------");
     equal(dashline(3),"-------------");
+  });
+});
+
+describe('addSpaces',()=>{
+  it('should add a space before and after the text',()=>{
+    equal(addSpaces("game")," game ");
+  });
+  it('should return empty if you dont pass anything',()=>{
+    equal(addSpaces(),"");
   });
 });
 
