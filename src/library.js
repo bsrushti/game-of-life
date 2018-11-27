@@ -36,10 +36,21 @@ const createRow = function(array){
   return row;
 }
 
+const printBoard = function(array){
+  let board = [];
+  let length = array[0].length;
+  board.push(dashline(length));
+  for(let row = 0;row < length;row++){
+    board = board.concat(createRow(array[row]));
+  };
+  return board;
+};
+
 module.exports = { 
   fillConsecutiveNumbersArray,
   fillArray,
   dashline,
   addSpaces,
-  createRow
+  createRow,
+  printBoard
 };
