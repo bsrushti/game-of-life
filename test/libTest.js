@@ -1,7 +1,8 @@
 const {deepEqual, equal} = require('assert');
 const {
   fillConsecutiveNumbersArray,
-  createArray
+  fillArray,
+  dashline
 } = require('../src/library.js'); 
 
 describe('fillConsecutiveNumbersArray', () => {
@@ -14,15 +15,26 @@ describe('fillConsecutiveNumbersArray', () => {
   });
 });
 
-describe('createArray',()=>{
+describe('fillArray',()=>{
   it('should return empty array for 0 as input',()=>{
-    deepEqual(createArray(0,0),[]);
+    deepEqual(fillArray(0,0),[]);
   });
   it('should return array for given size and fill that as per input',()=>{
-    deepEqual(createArray(1,0),[0]);
+    deepEqual(fillArray(1,0),[0]);
   });
   it('should return array for given size and fill that as per input',()=>{
-    deepEqual(createArray(2,"a"),["a","a"]);
+    deepEqual(fillArray(2,"a"),["a","a"]);
+  });
+});
+
+describe('dashline',()=>{
+  it('should return nothing if the input is 0',()=>{
+    equal(dashline(0),"");
+  });
+  it('should return dashes as per the given input',()=>{
+    equal(dashline(1),"-----");
+    equal(dashline(2),"---------");
+    equal(dashline(3),"-------------");
   });
 });
 

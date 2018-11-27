@@ -6,11 +6,19 @@ const fillConsecutiveNumbersArray = function(limit){
   return array;
 }
 
-const createArray = function(length,filler){
+const fillArray = function(length,filler){
   return new Array(length).fill(filler);
+};
+
+const dashline = function(length){
+  if(length==0){
+    return "";
+  };
+  return fillArray(length*4+1,"-").join("");
 };
 
 module.exports = { 
   fillConsecutiveNumbersArray,
-  createArray
+  fillArray,
+  dashline
 };
