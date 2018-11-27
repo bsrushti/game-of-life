@@ -24,9 +24,22 @@ const addSpaces = function(text){
   return "";
 };
 
+const createRow = function(array){
+  let row = [];
+  if(array.length == 0){
+    return array;
+  }
+  let column = array.map(addSpaces).join("|");
+  let cell = "|"+column+"|";
+  row.push(cell);
+  row.push(dashline(array.length));
+  return row;
+}
+
 module.exports = { 
   fillConsecutiveNumbersArray,
   fillArray,
   dashline,
-  addSpaces
+  addSpaces,
+  createRow
 };

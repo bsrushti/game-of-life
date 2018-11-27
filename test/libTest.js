@@ -3,7 +3,8 @@ const {
   fillConsecutiveNumbersArray,
   fillArray,
   dashline,
-  addSpaces
+  addSpaces,
+  createRow
 } = require('../src/library.js'); 
 
 describe('fillConsecutiveNumbersArray', () => {
@@ -48,3 +49,13 @@ describe('addSpaces',()=>{
   });
 });
 
+describe('createRow',()=>{
+  it('should return row as per given array and current postion',()=>{
+    deepEqual(createRow([1,2,3]),['| 1 | 2 | 3 |','-------------']);
+    deepEqual(createRow([2,3]),[ '| 2 | 3 |', '---------' ]);
+    deepEqual(createRow([3]),[ '| 3 |', '-----' ]);
+  });
+  it('should return empty if user passes empty',()=>{
+    deepEqual(createRow([]),[]);
+  });
+});
