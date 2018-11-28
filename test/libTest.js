@@ -7,7 +7,8 @@ const {
   createRow,
   printBoard,
   initialBoard,
-  initialGrid
+  initialGrid,
+  generateWorld
 } = require('../src/library.js'); 
 
 describe('fillConsecutiveNumbersArray', () => {
@@ -128,3 +129,16 @@ describe('initialGrid', () => {
     deepEqual(initialGrid(4),expectedOutput);
   });
 });
+
+describe('generateWorld', () => {
+  it('should return the intial grid as per the length',()=>{
+    let expectedOutput = [ [ 1 ] ];
+    deepEqual(generateWorld(initialGrid(1),[[0,0]]),expectedOutput);
+  });
+  it('should return the intial grid as per the length',()=>{
+    let expectedOutput = [ [ 1, 0, 0, 0 ], [ 0, 1, 0, 0 ], [ 0, 0, 0, 0 ], [ 0, 0, 0, 0 ] ]; 
+    deepEqual(generateWorld(initialGrid(4),[[0,0],[1,1]]),expectedOutput);
+  });
+});
+
+

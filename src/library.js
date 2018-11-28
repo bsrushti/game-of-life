@@ -65,6 +65,13 @@ const initialGrid = function(size) {
   return grid;
 };
 
+const generateWorld  = function(grid,aliveCells) {
+  for(let aliveCell of aliveCells){
+    grid[aliveCell[0]][aliveCell[1]] = 1;
+  };
+  return grid;
+};
+
 module.exports = { 
   fillConsecutiveNumbersArray,
   fillArray,
@@ -73,5 +80,6 @@ module.exports = {
   createRow,
   printBoard,
   initialBoard,
-  initialGrid
+  initialGrid,
+  generateWorld
 };
