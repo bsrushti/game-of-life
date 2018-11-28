@@ -14,7 +14,7 @@ describe('fillConsecutiveNumbersArray', () => {
   });
 
   it('should give with list of consecutive numbers according to the size', () => {
-    deepEqual(fillConsecutiveNumbersArray(3),[1,2,3]);
+    deepEqual(fillConsecutiveNumbersArray(3),[0,1,2]);
   });
 });
 
@@ -52,12 +52,12 @@ describe('addSpaces',()=>{
 
 describe('createRow',()=>{
   it('should return row as per given array and current postion',()=>{
-    deepEqual(createRow([1,2,3]),['| 1 | 2 | 3 |','-------------']);
-    deepEqual(createRow([2,3]),[ '| 2 | 3 |', '---------' ]);
-    deepEqual(createRow([3]),[ '| 3 |', '-----' ]);
+    deepEqual(createRow([1,2,3],1),['1| 1 | 2 | 3 |','-------------']);
+    deepEqual(createRow([2,3],2),[ '2| 2 | 3 |', '---------' ]);
+    deepEqual(createRow([3],0),[ '0| 3 |', '-----' ]);
   });
   it('should return empty if user passes empty',()=>{
-    deepEqual(createRow([]),[]);
+    deepEqual(createRow([],0),[ '0||', '' ]);
   });
 });
 
@@ -67,24 +67,26 @@ describe('printBoard', () => {
   });
 
   it('should return board with size 2*2 if input is array containing 2 arrays', () => {
-    let expectedOutput = [ '---------',
-      '| 1 | 2 |',
-      '---------',
-      '| 3 | 4 |',
-      '---------' ];
+    let expectedOutput = [ ' | 0 | 1 |',
+                           '---------',
+                           '0| 1 | 2 |',
+                           '---------',
+                           '1| 3 | 4 |',
+                           '---------' ];
     deepEqual(printBoard([[1,2],[3,4]]),expectedOutput);
   });
 
   it('should return board with size 4*4 if input is array containing 2 arrays', () => {
-    let expectedOutput = [ '-----------------',
-      '| 1 | 2 | 3 | 4 |',
-      '-----------------',
-      '| 4 | 5 | 6 | 7 |',
-      '-----------------',
-      '| 8 | 9 | 0 | 1 |',
-      '-----------------',
-      '| 2 | 3 | 4 | 5 |',
-      '-----------------' ];
+    let expectedOutput = [ ' | 0 | 1 | 2 | 3 |',
+                           '-----------------',
+                           '0| 1 | 2 | 3 | 4 |',
+                           '-----------------',
+                           '1| 4 | 5 | 6 | 7 |',
+                           '-----------------',
+                           '2| 8 | 9 | 0 | 1 |',
+                           '-----------------',
+                           '3| 2 | 3 | 4 | 5 |',
+                           '-----------------' ];
     deepEqual(printBoard([[1,2,3,4],[4,5,6,7],[8,9,0,1],[2,3,4,5]]),expectedOutput);
   });
 });

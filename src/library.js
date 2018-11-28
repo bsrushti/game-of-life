@@ -1,7 +1,7 @@
 const fillConsecutiveNumbersArray = function(limit){
   let array = [];
   for(let index = 0; index < limit ; index++){
-    array.push(index+1);
+    array.push(index);
   }
   return array;
 }
@@ -24,13 +24,17 @@ const addSpaces = function(text){
   return "";
 };
 
-const createRow = function(array){
+const xAxis = function(length) { 
+  let axis = fillConsecutiveNumbersArray(length).map(addSpaces).join("|");
+  axis = [" |" + axis + "|"]; 
+  axis =  axis.concat(dashline(length));
+  return axis;
+};
+
+const createRow = function(array, currRow){
   let row = [];
-  if(array.length == 0){
-    return array;
-  }
   let column = array.map(addSpaces).join("|");
-  let cell = "|"+column+"|";
+  let cell = currRow + "|"+ column +"|";
   row.push(cell);
   row.push(dashline(array.length));
   return row;
@@ -39,9 +43,12 @@ const createRow = function(array){
 const printBoard = function(array){
   let board = [];
   let length = array[0].length;
-  board.push(dashline(length));
+  if(array[0].length == 0){
+    return [""];
+  }
+  board = board.concat(xAxis(length));
   for(let row = 0;row < length;row++){
-    board = board.concat(createRow(array[row]));
+    board = board.concat(createRow(array[row], row));
   };
   return board;
 };
