@@ -10,6 +10,8 @@ const {
   initialGrid,
   generateWorld,
   cartesian,
+  validNeighbors,
+  findingNeighbors
 } = require('../src/library.js'); 
 
 describe('fillConsecutiveNumbersArray', () => {
@@ -150,6 +152,28 @@ describe('cartesian', () => {
   it('should return all possible combinations of given sets',()=>{
     let expectedOutput = [ [ 1, 0 ], [ 1, 1 ], [ 0, 0 ], [ 0, 1 ] ];
     deepEqual(cartesian([1,0],[0,1]),expectedOutput);
+  });
+});
+
+describe('validNeighbors', () => {
+  it('should return valid neighbours for [0,0] co-ordinates',()=>{
+    let expectedOutput = [];
+    deepEqual(validNeighbors(cartesian([0],[0]), [0,0], 3),expectedOutput);
+  });
+  it('should return valid neighbours for given co-ordinates',()=>{
+    let expectedOutput = [ [ 1, 1 ], [ 0, 0 ], [ 0, 1 ] ]; 
+    deepEqual(validNeighbors(cartesian([1,0],[0,1]), [1,0], 3),expectedOutput);
+  });
+});
+
+describe('findingNeighbors', () => {
+  it('should return possible neighbours for [0,0] co-ordinates',()=>{
+    let expectedOutput = [ [ 0, 1 ], [ 1, 0 ], [ 1, 1 ] ]; 
+    deepEqual(findingNeighbors(3, [0,0]),expectedOutput);
+  });
+  it('should return all possible neighbours for given co-ordinates',()=>{
+    let expectedOutput = [ [ 0, 0 ], [ 0, 1 ], [ 1, 1 ], [ 2, 0 ], [ 2, 1 ] ]; 
+    deepEqual(findingNeighbors(3, [1,0]),expectedOutput);
   });
 });
 

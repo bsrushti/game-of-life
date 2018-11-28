@@ -83,6 +83,35 @@ const cartesian = function(set1,set2){
   return resultSet;
 };
 
+const predicate = function(cell, neighbour) {
+  return !(cell[0]==neighbour[0] && cell[1]==neighbour[1]);
+};
+
+const checkRangeForNegativeNumbers = function(cell) {
+  return (cell[0] >= 0 && cell[1] >= 0);
+};
+
+const isCoordinatesGreaterThanBoard = function(boardSize, cell) {
+  return (cell[0] < boardSize && cell[1] < boardSize);
+};
+
+const validNeighbors = function(possibleNeighbors, cell, size) {
+  let isVallid = predicate.bind(null,cell);
+  let validNeighbors = possibleNeighbors.filter(isVallid);
+  validNeighbors = validNeighbors.filter(checkRangeForNegativeNumbers);
+  let checkGreaterThanBoard = isCoordinatesGreaterThanBoard.bind(null,size);
+  validNeighbors = validNeighbors.filter(checkGreaterThanBoard);
+  return validNeighbors;
+};
+
+const findingNeighbors = function(size, cell) {
+  let rowCoordinates = [cell[0]-1, cell[0], cell[0]+1];
+  let coloumnCoordinates = [cell[1]-1, cell[1], cell[1]+1];
+  let possibleNeighbors = cartesian(rowCoordinates, coloumnCoordinates);
+  let neighbors = validNeighbors(possibleNeighbors, cell, size);
+  return neighbors;
+};
+
 module.exports = { 
   fillConsecutiveNumbersArray,
   fillArray,
@@ -93,5 +122,7 @@ module.exports = {
   initialBoard,
   initialGrid,
   generateWorld,
-  cartesian
+  cartesian,
+  validNeighbors,
+  findingNeighbors
 };
