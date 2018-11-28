@@ -60,6 +60,11 @@ const initialBoard = function(length) {
   return printBoard(arrayOfRowLength.map(fillArray(" ")));
 };
 
+const initialGrid = function(size) { 
+  let grid = new Array(size).fill(size).map(x => new Array(x).fill(0));
+  return grid;
+};
+
 module.exports = { 
   fillConsecutiveNumbersArray,
   fillArray,
@@ -67,5 +72,6 @@ module.exports = {
   addSpaces,
   createRow,
   printBoard,
-  initialBoard
+  initialBoard,
+  initialGrid
 };

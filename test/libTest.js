@@ -6,7 +6,8 @@ const {
   addSpaces,
   createRow,
   printBoard,
-  initialBoard
+  initialBoard,
+  initialGrid
 } = require('../src/library.js'); 
 
 describe('fillConsecutiveNumbersArray', () => {
@@ -117,3 +118,13 @@ describe('intialBoard',()=>{
   });
 });
 
+describe('initialGrid', () => {
+  it('should return the intial grid as per the length',()=>{
+    let expectedOutput = [];
+    deepEqual(initialGrid(0),expectedOutput);
+  });
+  it('should return the intial grid as per the length',()=>{
+    let expectedOutput = [ [ 0, 0, 0, 0 ], [ 0, 0, 0, 0 ], [ 0, 0, 0, 0 ], [ 0, 0, 0, 0 ] ];
+    deepEqual(initialGrid(4),expectedOutput);
+  });
+});
