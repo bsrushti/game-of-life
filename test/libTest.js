@@ -9,7 +9,7 @@ const {
   initialBoard,
   initialGrid,
   generateWorld,
-  cartesian
+  cartesian,
 } = require('../src/library.js'); 
 
 describe('fillConsecutiveNumbersArray', () => {
@@ -132,22 +132,22 @@ describe('initialGrid', () => {
 });
 
 describe('generateWorld', () => {
-  it('should return the intial grid as per the length',()=>{
+  it('should return the grid of length one',()=>{
     let expectedOutput = [ [ 1 ] ];
     deepEqual(generateWorld(initialGrid(1),[[0,0]]),expectedOutput);
   });
-  it('should return the intial grid as per the length',()=>{
+  it('should return the grid as per the length',()=>{
     let expectedOutput = [ [ 1, 0, 0, 0 ], [ 0, 1, 0, 0 ], [ 0, 0, 0, 0 ], [ 0, 0, 0, 0 ] ]; 
     deepEqual(generateWorld(initialGrid(4),[[0,0],[1,1]]),expectedOutput);
   });
 });
 
 describe('cartesian', () => {
-  it('should return the intial grid as per the length',()=>{
+  it('should return possible combinations for set of having 0 as an element',()=>{
     let expectedOutput = [ [ 0, 0 ] ];
     deepEqual(cartesian([0],[0]),expectedOutput);
   });
-  it('should return the intial grid as per the length',()=>{
+  it('should return all possible combinations of given sets',()=>{
     let expectedOutput = [ [ 1, 0 ], [ 1, 1 ], [ 0, 0 ], [ 0, 1 ] ];
     deepEqual(cartesian([1,0],[0,1]),expectedOutput);
   });
