@@ -6,15 +6,17 @@ const fillConsecutiveNumbersArray = function(limit){
   return array;
 }
 
-const fillArray = function(length,filler){
-  return new Array(length).fill(filler);
+const fillArray = function(filler){
+  return function(length) {
+    return new Array(length).fill(filler);
+  }
 };
 
 const dashline = function(length){
   if(length==0){
     return "";
   };
-  return fillArray(length*4+1,"-").join("");
+  return fillArray("-")(length*4+2).join("");
 };
 
 const addSpaces = function(text){
@@ -51,6 +53,11 @@ const printBoard = function(array){
     board = board.concat(createRow(array[row], row));
   };
   return board;
+};
+
+const initialBoard = function(length) { 
+  let arrayOfRowLength = fillArray(length)(length);
+  return printBoard(arrayOfRowLength.map(fillArray(" ")));
 };
 
 module.exports = { 
