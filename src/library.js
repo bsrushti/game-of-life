@@ -46,11 +46,15 @@ const addSpaces = function(text){
   return "";
 };
 
+const fillArray = function(length,filler){
+  return new Array(length).fill(filler);
+};
+
 module.exports = { 
   fillConsecutiveNumbersArray,
-  printBoard,
-  addSpaces,
-  createArray,
+  fillArray,
   dashline,
-  createRow
+  addSpaces,
+  createRow,
+  printBoard
 };
