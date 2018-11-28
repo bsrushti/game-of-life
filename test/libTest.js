@@ -12,7 +12,8 @@ const {
   cartesian,
   validNeighbors,
   findingNeighbors,
-  totalAliveNeighbors
+  totalAliveNeighbors,
+  generateNextWorld
 } = require('../src/library.js'); 
 
 describe('fillConsecutiveNumbersArray', () => {
@@ -186,6 +187,16 @@ describe('totalAliveNeighbors', () => {
     deepEqual(totalAliveNeighbors([1,0], [[1,0,0],[0,1,0],[0,0,1]]),expectedOutput);
   });
 });
+
+describe('generateNextWorld', () => {
+  it('should return next generation for given grid',()=>{
+    let expectedOutput = [ [ 0, 0 ], [ 0, 0 ] ]; 
+    deepEqual(generateNextWorld([[0,0],[1,0]]),expectedOutput);
+    expectedOutput = [ [ 1, 1, 1 ], [ 1, 1, 1 ], [ 0, 1, 0 ] ]; 
+    deepEqual(generateNextWorld([[0,1,0],[1,1,1],[0,0,0]]),expectedOutput);
+  });
+});
+
 
 
 

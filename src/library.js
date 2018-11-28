@@ -123,6 +123,23 @@ const totalAliveNeighbors = function(cell, grid) {
   return aliveNeighbor.length;
 };
 
+const checkForNextGenration = function(currentCellState,neighbourLength) {
+  let rules = [[0,0,0,1,0,0,0,0,0],[0,0,1,1,0,0,0,0,0]];
+  return rules[currentCellState][neighbourLength];
+};
+
+const generateNextWorld  = function(initialWorld) {
+  let nextWorld = initialWorld.map(x=>x.slice());
+  for( let index = 0; index < initialWorld.length; index ++) {
+    for(let i = 0; i < initialWorld.length; i++ ) {
+      let noOfAliveNeighbours = totalAliveNeighbors([index,i],initialWorld);
+      let nextState = checkForNextGenration(initialWorld[index][i],noOfAliveNeighbours);
+      nextWorld[index][i] = nextState;
+    };
+  };
+  return nextWorld;
+}
+
 module.exports = { 
   fillConsecutiveNumbersArray,
   fillArray,
@@ -136,5 +153,6 @@ module.exports = {
   cartesian,
   validNeighbors,
   findingNeighbors,
-  totalAliveNeighbors
+  totalAliveNeighbors,
+  generateNextWorld
 };
