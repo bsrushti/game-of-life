@@ -5,7 +5,8 @@ const {
   dashline,
   addSpaces,
   createRow,
-  printBoard
+  printBoard,
+  initialBoard
 } = require('../src/library.js'); 
 
 describe('fillConsecutiveNumbersArray', () => {
@@ -90,3 +91,29 @@ describe('printBoard', () => {
     deepEqual(printBoard([[1,2,3,4],[4,5,6,7],[8,9,0,1],[2,3,4,5]]),expectedOutput);
   });
 });
+
+describe('intialBoard',()=>{
+  it('should return the intial board as per the length',()=>{
+    let expectedOutput = [ ' | 0 | 1 |',
+                           '----------',
+                           '0|   |   |',
+                           '----------',
+                           '1|   |   |',
+                           '----------' ];
+    deepEqual(initialBoard(2),expectedOutput);
+  });
+  it('should return the intial board as per the length',()=>{
+    let expectedOutput = [ ' | 0 | 1 | 2 | 3 |',
+                           '------------------',
+                           '0|   |   |   |   |',
+                           '------------------',
+                           '1|   |   |   |   |',
+                           '------------------',
+                           '2|   |   |   |   |',
+                           '------------------',
+                           '3|   |   |   |   |',
+                           '------------------'];
+    deepEqual(initialBoard(4),expectedOutput);
+  });
+});
+

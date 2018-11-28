@@ -66,5 +66,6 @@ module.exports = {
   dashline,
   addSpaces,
   createRow,
-  printBoard
+  printBoard,
+  initialBoard
 };
