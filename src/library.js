@@ -72,6 +72,17 @@ const generateWorld  = function(grid,aliveCells) {
   return grid;
 };
 
+const cartesian = function(set1,set2){
+  let resultSet = [];
+  let length = set1.length;
+  for(let rowIndex = 0; rowIndex < length; rowIndex++){
+    for(let columnIndex = 0; columnIndex < length; columnIndex++){
+      resultSet.push([set1[rowIndex],set2[columnIndex]]);
+    };
+  };
+  return resultSet;
+};
+
 module.exports = { 
   fillConsecutiveNumbersArray,
   fillArray,
@@ -81,5 +92,6 @@ module.exports = {
   printBoard,
   initialBoard,
   initialGrid,
-  generateWorld
+  generateWorld,
+  cartesian
 };

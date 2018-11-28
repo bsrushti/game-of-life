@@ -8,7 +8,8 @@ const {
   printBoard,
   initialBoard,
   initialGrid,
-  generateWorld
+  generateWorld,
+  cartesian
 } = require('../src/library.js'); 
 
 describe('fillConsecutiveNumbersArray', () => {
@@ -141,4 +142,14 @@ describe('generateWorld', () => {
   });
 });
 
+describe('cartesian', () => {
+  it('should return the intial grid as per the length',()=>{
+    let expectedOutput = [ [ 0, 0 ] ];
+    deepEqual(cartesian([0],[0]),expectedOutput);
+  });
+  it('should return the intial grid as per the length',()=>{
+    let expectedOutput = [ [ 1, 0 ], [ 1, 1 ], [ 0, 0 ], [ 0, 1 ] ];
+    deepEqual(cartesian([1,0],[0,1]),expectedOutput);
+  });
+});
 
