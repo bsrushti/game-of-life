@@ -112,6 +112,17 @@ const findingNeighbors = function(size, cell) {
   return neighbors;
 };
 
+const checkForAlive = function(grid, neighbour) {
+  return grid[neighbour[0]][neighbour[1]] == 1;
+};
+
+const totalAliveNeighbors = function(cell, grid) {
+  let neighbors = findingNeighbors(grid.length, cell);
+  let isAlive = checkForAlive.bind(null, grid);
+  let aliveNeighbor = neighbors.filter(isAlive);
+  return aliveNeighbor.length;
+};
+
 module.exports = { 
   fillConsecutiveNumbersArray,
   fillArray,
@@ -124,5 +135,6 @@ module.exports = {
   generateWorld,
   cartesian,
   validNeighbors,
-  findingNeighbors
+  findingNeighbors,
+  totalAliveNeighbors
 };

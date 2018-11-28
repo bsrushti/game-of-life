@@ -11,7 +11,8 @@ const {
   generateWorld,
   cartesian,
   validNeighbors,
-  findingNeighbors
+  findingNeighbors,
+  totalAliveNeighbors
 } = require('../src/library.js'); 
 
 describe('fillConsecutiveNumbersArray', () => {
@@ -176,4 +177,15 @@ describe('findingNeighbors', () => {
     deepEqual(findingNeighbors(3, [1,0]),expectedOutput);
   });
 });
+
+describe('totalAliveNeighbors', () => {
+  it('should return total number of alive neighbours of given cell',()=>{
+    let expectedOutput = 1;
+    deepEqual(totalAliveNeighbors([0,0], [[1,0,0],[0,1,0],[1,0,0]]),expectedOutput);
+    expectedOutput = 2; 
+    deepEqual(totalAliveNeighbors([1,0], [[1,0,0],[0,1,0],[0,0,1]]),expectedOutput);
+  });
+});
+
+
 
